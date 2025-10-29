@@ -1,0 +1,1 @@
+npx nswag run nswag\service.config.nswag

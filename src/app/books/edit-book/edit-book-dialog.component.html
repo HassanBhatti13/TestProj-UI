@@ -1,0 +1,67 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editBookForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditBook' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="title">
+        {{ "Title" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          required
+          minlength="2"
+          maxlength="128"
+          [(ngModel)]="book.title"
+          #title="ngModel"
+          #titleEl
+        />
+        <abp-validation-summary
+          [control]="title"
+          [controlEl]="titleEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="author">
+        {{ "Author" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="author"
+          id="author"
+          required
+          minlength="2"
+          maxlength="64"
+          [(ngModel)]="book.author"
+          #author="ngModel"
+          #authorEl
+        />
+        <abp-validation-summary
+          [control]="author"
+          [controlEl]="authorEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+  </div>
+  
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editBookForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

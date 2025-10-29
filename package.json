@@ -11,7 +11,7 @@
         "ng": "ng",
         "start": "ng serve --host 0.0.0.0 --port 4200 --no-hmr",
         "test": "ng test",
-        "build": "ng build --prod",
+        "build": "ng build",
         "prettier": "npx prettier --write ."
     },
     "type": "module",
